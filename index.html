@@ -22,13 +22,79 @@
                 return "Scissors"
             }
         }
-        function playerSelection(word) {
+        function getPlayerChoice(word) {
             let newFirst = word[0].toUpperCase()
             let newSecond = word.slice(1, word.length).toLowerCase()
             return newFirst + newSecond
         }
-        console.log(getComputerChoice())
-        console.log(playerSelection("paPeR"))
+        function playRound(playerSelection, computerSelection) {
+            if (playerSelection == "Rock") {
+                if (computerSelection == "Rock") {
+                    console.log("Draw")
+                    return "draw"
+                }
+                else if (computerSelection == "Paper") {
+                    console.log("You Lose! Paper beats Rock")
+                    return "lose"
+                }
+                else {
+                    console.log("You Win! Rock beats Scissors")
+                    return "win"
+                }
+            }
+            else if (playerSelection == "Paper") {
+                if (computerSelection == "Rock") {
+                    console.log("You Win! Paper beats Rock")
+                    return "win"
+                }
+                else if (computerSelection == "Paper") {
+                    console.log("Draw")
+                    return "draw"
+                }
+                else {
+                    console.log("You Lose! Scissors beats Paper")
+                    return "lose"
+                }
+            }
+            else {
+                if (computerSelection == "Rock") {
+                    console.log("You Lose! Rock beats Scissors")
+                    return "lose"
+                }
+                else if (computerSelection == "Paper"){
+                    console.log("You Win! Scissors beats Paper")
+                    return "win"
+                }
+                else {
+                    console.log("Draw")
+                    return "draw"
+                }
+            }
+        }
+        function game() {
+            let playerScore = 0
+            let computerScore = 0
+            for (let i = 0; i < 5; i++) {
+                let playerSelection = prompt("Rock, Paper, or Scissors?")
+                playerSelection = getPlayerChoice(playerSelection)
+                let computerSelection = getComputerChoice()
+                let result = playRound(playerSelection, computerSelection)
+                if (result == "win")
+                    playerScore += 1
+                else if (result == "lose")
+                    computerScore += 1
+            }
+            console.log(`Player Score: ${playerScore} \nComputer Score: ${computerScore}`)
+            if (playerScore > computerScore)
+                return "Player wins"
+            else if (computerScore > playerScore)
+                return "Computer wins"
+            else
+                return "Draw"
+        }
+        result = game()
+        console.log(result)
+        
     </script>
 </body>
 
