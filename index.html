@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>Document</title>
 </head>
+
 <body>
     <script>
         function getComputerChoice() {
@@ -20,7 +22,14 @@
                 return "Scissors"
             }
         }
+        function playerSelection(word) {
+            let newFirst = word[0].toUpperCase()
+            let newSecond = word.slice(1, word.length).toLowerCase()
+            return newFirst + newSecond
+        }
         console.log(getComputerChoice())
+        console.log(playerSelection("paPeR"))
     </script>
 </body>
+
 </html>
